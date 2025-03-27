@@ -9,7 +9,6 @@ namespace IngredientAnalysisAPI.Controllers
     [Route("api/[controller]")]
     public class IngredientAnalysisController : ControllerBase
     {
-        // Testing Git change tracking
 
         private static List<RecipeIngredient> recipeIngredients = new List<RecipeIngredient>
         {
