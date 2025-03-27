@@ -5,14 +5,14 @@ VisualStudioVersion = 17.13.35806.99
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagementSyst", "RecipeManagementSyst\RecipeManagementSyst.csproj", "{20722811-44BC-4959-AE4D-7E440F56F21F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagementSystemAPI", "..\RecipeManagementSystemAPI\RecipeManagementSystemAPI\RecipeManagementSystemAPI.csproj", "{C4488C3B-BDCD-145A-5988-5C83EAE6E533}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagementSystemClient", "RecipeManagementSystemClient\RecipeManagementSystemClient.csproj", "{24FE1A9C-1836-4C75-9869-4EE7A49BC5A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeManagementSystemAPI", "RecipeManagementSystemAPI\RecipeManagementSystemAPI.csproj", "{5956D291-EB51-46CA-960D-AAD85A5B0AA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +24,14 @@ Global
 		{20722811-44BC-4959-AE4D-7E440F56F21F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20722811-44BC-4959-AE4D-7E440F56F21F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20722811-44BC-4959-AE4D-7E440F56F21F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4488C3B-BDCD-145A-5988-5C83EAE6E533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4488C3B-BDCD-145A-5988-5C83EAE6E533}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4488C3B-BDCD-145A-5988-5C83EAE6E533}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4488C3B-BDCD-145A-5988-5C83EAE6E533}.Release|Any CPU.Build.0 = Release|Any CPU
 		{24FE1A9C-1836-4C75-9869-4EE7A49BC5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{24FE1A9C-1836-4C75-9869-4EE7A49BC5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24FE1A9C-1836-4C75-9869-4EE7A49BC5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24FE1A9C-1836-4C75-9869-4EE7A49BC5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5956D291-EB51-46CA-960D-AAD85A5B0AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5956D291-EB51-46CA-960D-AAD85A5B0AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5956D291-EB51-46CA-960D-AAD85A5B0AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5956D291-EB51-46CA-960D-AAD85A5B0AA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
