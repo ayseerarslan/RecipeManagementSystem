@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-3 fw-bold">🍽️ Welcome to the Recipe App</h1>
+    <p class="lead text-muted">Your delicious recipes and ingredients — organized, editable, and always at your fingertips.</p>
+
+    <div class="mt-4">
+        <a asp-controller="Recipe" asp-action="Index" class="btn btn-outline-primary btn-lg me-2">
+            View Recipes
+        </a>
+        <a asp-controller="Ingredient" asp-action="Index" class="btn btn-outline-success btn-lg">
+            View Ingredients
+        </a>
+    </div>
+</div>
+
+<hr class="my-5" />
+
+<div class="row text-center">
+    <div class="col-md-6 mb-4">
+        <div class="card shadow p-4">
+            <h3 class="text-primary">📖 Manage Recipes</h3>
+            <p>Add, edit, delete, and view your favorite dishes with step-by-step instructions.</p>
+            <a asp-controller="Recipe" asp-action="Create" class="btn btn-primary">Add New Recipe</a>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card shadow p-4">
+            <h3 class="text-success">🥕 Manage Ingredients</h3>
+            <p>Keep your ingredients list tidy and reusable across all your delicious recipes.</p>
+            <a asp-controller="Ingredient" asp-action="Create" class="btn btn-success">Add New Ingredient</a>
+        </div>
+    </div>
+</div>
