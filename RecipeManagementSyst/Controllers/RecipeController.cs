@@ -1,89 +1,161 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RecipeManagementSystem.Data;
 using RecipeManagementSystem.Models;
-using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RecipeManagementSystem.Controllers
 {
     public class RecipeController : Controller
     {
-        private static List<Recipe> recipes = new List<Recipe>() // Temporary list before DB setup 
-        {
-            new Recipe { RecipeID = 1, Name = "Pasta", Description = "A simple pasta dish", Instructions = "Boil water, add pasta, cook for 10 minutes, drain, add sauce" },
-            new Recipe { RecipeID = 2, Name = "Chicken Curry", Description = "A spicy chicken curry", Instructions = "Fry onions, add chicken, add curry paste, simmer for 20 minutes" },
-            new Recipe { RecipeID = 3, Name = "Chocolate Cake", Description = "A rich chocolate cake", Instructions = "Mix flour, sugar, cocoa, add eggs, bake for 30 minutes" }
-        };
+        private readonly RecipeDbContext _context;
 
-        public IActionResult Index()
+        public RecipeController(RecipeDbContext context)
         {
-            return View(recipes);
+            _context = context;
         }
 
+        // GET: Recipe
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Recipes.ToListAsync());
+        }
+
+        // GET: Recipe/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var recipe = await _context.Recipes
+                .Include(r => r.RecipeIngredients)
+                .ThenInclude(ri => ri.Ingredient)
+                .FirstOrDefaultAsync(m => m.RecipeID == id);
+
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
+            return View(recipe);
+        }
+
+        // GET: Recipe/Create
         public IActionResult Create()
         {
             return View();
         }
 
+        // POST: Recipe/Create
         [HttpPost]
-        public IActionResult Create(Recipe recipe)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Name,Description,Instructions")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
-                recipes.Add(recipe);
-                return RedirectToAction("Index");
+                _context.Add(recipe);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(recipe);
         }
 
-        public IActionResult Edit(int id)
+        // GET: Recipe/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            var recipe = recipes.FirstOrDefault(r => r.RecipeID == id);
-            if (recipe == null)
+            if (id == null)
+            {
                 return NotFound();
+            }
+
+            var recipe = await _context.Recipes.FindAsync(id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
             return View(recipe);
         }
 
-        public IActionResult Details(int id)
-        {
-            var recipe = recipes.FirstOrDefault(r => r.RecipeID == id);
-            if (recipe == null)
-                return NotFound();
-
-            return View(recipe);
-        }
-
+        // POST: Recipe/Edit/5
         [HttpPost]
-        public IActionResult Edit(int id, Recipe recipe)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("RecipeID,Name,Description,Instructions")] Recipe recipe)
         {
+            if (id != recipe.RecipeID)
+            {
+                return NotFound();
+            }
+
             if (ModelState.IsValid)
             {
-                var existingRecipe = recipes.FirstOrDefault(r => r.RecipeID == id);
-                if (existingRecipe != null)
+                try
                 {
-                    existingRecipe.Name = recipe.Name;
-                    existingRecipe.Description = recipe.Description;
-                    existingRecipe.Instructions = recipe.Instructions;
+                    _context.Update(recipe);
+                    await _context.SaveChangesAsync();
                 }
-                return RedirectToAction("Index");
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!RecipeExists(recipe.RecipeID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
             }
             return View(recipe);
         }
 
-        public IActionResult Delete(int id)
+        // GET: Recipe/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-            var recipe = recipes.FirstOrDefault(r => r.RecipeID == id);
-            if (recipe == null)
+            if (id == null)
+            {
                 return NotFound();
+            }
+
+            var recipe = await _context.Recipes
+                .FirstOrDefaultAsync(m => m.RecipeID == id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
             return View(recipe);
         }
 
+        // POST: Recipe/Delete/5
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(int id)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var recipe = recipes.FirstOrDefault(r => r.RecipeID == id);
+            var recipe = await _context.Recipes.FindAsync(id);
             if (recipe != null)
-                recipes.Remove(recipe);
-            return RedirectToAction("Index");
+            {
+                // First, delete any associated RecipeIngredients
+                var recipeIngredients = await _context.RecipeIngredients
+                    .Where(ri => ri.RecipeID == id)
+                    .ToListAsync();
+                
+                _context.RecipeIngredients.RemoveRange(recipeIngredients);
+                
+                // Then delete the recipe
+                _context.Recipes.Remove(recipe);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool RecipeExists(int id)
+        {
+            return _context.Recipes.Any(e => e.RecipeID == id);
         }
     }
 }
