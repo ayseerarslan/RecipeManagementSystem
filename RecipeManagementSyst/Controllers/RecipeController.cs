@@ -52,7 +52,7 @@ namespace RecipeManagementSystem.Controllers
         // POST: Recipe/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Description,Instructions")] Recipe recipe)
+        public async Task<IActionResult> Create([Bind("Name,CookTime,Description,Instructions")] Recipe recipe)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace RecipeManagementSystem.Controllers
         // POST: Recipe/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RecipeID,Name,Description,Instructions")] Recipe recipe)
+        public async Task<IActionResult> Edit(int id, [Bind("RecipeID,Name,CookTime,Description,Instructions")] Recipe recipe)
         {
             if (id != recipe.RecipeID)
             {

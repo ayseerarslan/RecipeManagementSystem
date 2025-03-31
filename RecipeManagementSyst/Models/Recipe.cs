@@ -15,6 +15,10 @@ namespace RecipeManagementSystem.Models
         [DisplayName("Name:")]
         public string Name { get; set; }
 
+        [Required]
+        [DisplayName("Cook Time (In Minutes):")]
+        public int CookTime { get; set; }
+
         [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters.")]
         [DisplayName("Description:")]
         public string Description { get; set; }
