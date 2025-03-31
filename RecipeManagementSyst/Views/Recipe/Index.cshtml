@@ -22,9 +22,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Instructions)
-            </th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -35,14 +32,10 @@
                 <td>@Html.DisplayFor(modelItem => item.RecipeID)</td>
                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
                 <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                <td>@Html.DisplayFor(modelItem => item.Instructions)</td>
-                <td>
                 <td>
                         @Html.ActionLink("Details", "Details", new { id = item.RecipeID }) |
                         @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.RecipeID })
-                </td>
-
                 </td>
             </tr>
         }
