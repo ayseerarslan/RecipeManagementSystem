@@ -16,6 +16,10 @@ namespace RecipeManagementSystem.Models
         public string Name { get; set; }
 
         [Required]
+        [DisplayName("Meal Type:\n(Breakfast, Lunch, Dinner, Dessert, Snack, Drink)")]
+        public string MealType { get; set; }
+
+        [Required]
         [DisplayName("Cook Time (In Minutes):")]
         public int CookTime { get; set; }
 

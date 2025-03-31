@@ -41,16 +41,16 @@ namespace RecipeManagementSystem.Data
                 // Add recipes from RecipeController
                 var recipes = new Recipe[]
                 {
-                    new Recipe { Name = "Pasta", CookTime = 15, Description = "A simple pasta dish", Instructions = "Boil water, add pasta, cook for 10 minutes, drain, add sauce" },
-                    new Recipe { Name = "Chicken Curry", CookTime = 25, Description = "A spicy chicken curry", Instructions = "Fry onions, add chicken, add curry paste, simmer for 20 minutes" },
-                    new Recipe { Name = "Chocolate Cake", CookTime = 35, Description = "A rich chocolate cake", Instructions = "Mix flour, sugar, cocoa, add eggs, bake for 30 minutes" },
-                    new Recipe { Name = "Vegetable Stir-Fry", CookTime = 15, Description = "A quick and healthy stir-fry", Instructions = "Chop vegetables, stir-fry in oil, add soy sauce and garlic, cook for 5 minutes" },
-                    new Recipe { Name = "Beef Stew", CookTime = 140, Description = "A hearty beef stew", Instructions = "Brown beef, add carrots and potatoes, pour in broth, simmer for 2 hours" },
-                    new Recipe { Name = "Omelette", CookTime = 5, Description = "A simple egg omelette", Instructions = "Beat eggs, pour into pan, cook for 2 minutes, fold and serve" },
-                    new Recipe { Name = "Caesar Salad", CookTime = 5, Description = "A classic Caesar salad", Instructions = "Chop lettuce, add croutons, mix with Caesar dressing, sprinkle cheese" },
-                    new Recipe { Name = "Grilled Salmon", CookTime = 15, Description = "A delicious grilled salmon", Instructions = "Season salmon, grill for 6 minutes per side, serve with lemon" },
-                    new Recipe { Name = "Mushroom Soup", CookTime = 10, Description = "A creamy mushroom soup", Instructions = "Sauté mushrooms, add broth, blend with cream, season to taste" },
-                    new Recipe { Name = "Fruit Smoothie", CookTime = 5, Description = "A refreshing fruit smoothie", Instructions = "Blend banana, strawberries, yogurt, and honey until smooth" }
+                    new Recipe { Name = "Pasta", MealType = "Lunch", CookTime = 15, Description = "A simple pasta dish", Instructions = "Boil water, add pasta, cook for 10 minutes, drain, add sauce" },
+                    new Recipe { Name = "Chicken Curry", MealType = "Dinner", CookTime = 25, Description = "A spicy chicken curry", Instructions = "Fry onions, add chicken, add curry paste, simmer for 20 minutes" },
+                    new Recipe { Name = "Chocolate Cake", MealType = "Dessert", CookTime = 35, Description = "A rich chocolate cake", Instructions = "Mix flour, sugar, cocoa, add eggs, bake for 30 minutes" },
+                    new Recipe { Name = "Vegetable Stir-Fry", MealType = "Dinner",CookTime = 15, Description = "A quick and healthy stir-fry", Instructions = "Chop vegetables, stir-fry in oil, add soy sauce and garlic, cook for 5 minutes" },
+                    new Recipe { Name = "Beef Stew", MealType = "Dinner", CookTime = 140, Description = "A hearty beef stew", Instructions = "Brown beef, add carrots and potatoes, pour in broth, simmer for 2 hours" },
+                    new Recipe { Name = "Omelette", MealType = "Breakfast", CookTime = 5, Description = "A simple egg omelette", Instructions = "Beat eggs, pour into pan, cook for 2 minutes, fold and serve" },
+                    new Recipe { Name = "Caesar Salad", MealType = "Lunch", CookTime = 5, Description = "A classic Caesar salad", Instructions = "Chop lettuce, add croutons, mix with Caesar dressing, sprinkle cheese" },
+                    new Recipe { Name = "Grilled Salmon", MealType = "Dinner", CookTime = 15, Description = "A delicious grilled salmon", Instructions = "Season salmon, grill for 6 minutes per side, serve with lemon" },
+                    new Recipe { Name = "Mushroom Soup", MealType = "Lunch", CookTime = 10, Description = "A creamy mushroom soup", Instructions = "Sauté mushrooms, add broth, blend with cream, season to taste" },
+                    new Recipe { Name = "Fruit Smoothie", MealType = "Drink", CookTime = 5, Description = "A refreshing fruit smoothie", Instructions = "Blend banana, strawberries, yogurt, and honey until smooth" }
                 };
 
                 context.Recipes.AddRange(recipes);
