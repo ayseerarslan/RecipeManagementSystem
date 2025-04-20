@@ -2,10 +2,12 @@
 
 namespace RecipeManagementSystemAPI.Models
 {
-    public class Ingredient
+    public class Recipe
     {
-        public int IngredientID { get; set; }
+        public int RecipeID { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
+        public string Instructions { get; set; }
 
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
     }
