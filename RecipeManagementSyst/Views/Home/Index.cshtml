@@ -33,4 +33,56 @@
             <a asp-controller="Ingredient" asp-action="Create" class="btn btn-success">Add New Ingredient</a>
         </div>
     </div>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Popular Ingredients</h5>
+        </div>
+        <div class="card-body">
+            <ul id="popularIngredients" class="list-group">
+                <li class="list-group-item text-center">Loading popular ingredients...</li>
+            </ul>
+        </div>
+    </div>
+
 </div>
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          fetch('https://recipe-management-system-api.azurewebsites.net/api/ingredientanalysis/popular')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok: ' + response.status);
+              }
+              return response.json();
+            })
+            .then(data => {
+              const list = document.getElementById('popularIngredients');
+              list.innerHTML = '';
+
+              if (data.length === 0) {
+                list.innerHTML = '<li class="list-group-item text-center">No popular ingredients found</li>';
+                return;
+              }
+
+              data.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                li.textContent = item.ingredient;
+
+                const badge = document.createElement('span');
+                badge.className = 'badge bg-primary rounded-pill';
+                badge.textContent = item.count;
+
+                li.appendChild(badge);
+                list.appendChild(li);
+              });
+            })
+            .catch(error => {
+              document.getElementById('popularIngredients').innerHTML =
+                `<li class="list-group-item text-danger">Error loading data: ${error.message}</li>`;
+              console.error('Error fetching popular ingredients:', error);
+            });
+        });
+    </script>
+}

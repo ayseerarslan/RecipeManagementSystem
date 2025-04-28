@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace RecipeManagementSystem.Models
+namespace RecipeManagementSyst.Models
 {
     public class Ingredient
     {

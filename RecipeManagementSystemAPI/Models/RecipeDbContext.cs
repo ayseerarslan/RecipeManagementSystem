@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RecipeManagementSyst.Models;
 
-namespace RecipeManagementSyst.Data
+namespace RecipeManagementSystemAPI.Models
 {
     public class RecipeDbContext : DbContext
     {
@@ -28,6 +27,11 @@ namespace RecipeManagementSyst.Data
                 .HasOne(ri => ri.Ingredient)
                 .WithMany(i => i.RecipeIngredients)
                 .HasForeignKey(ri => ri.IngredientID);
+
+            // Specify exact table names to match main application
+            modelBuilder.Entity<Recipe>().ToTable("Recipes");
+            modelBuilder.Entity<Ingredient>().ToTable("Ingredients");
+            modelBuilder.Entity<RecipeIngredient>().ToTable("RecipeIngredients");
         }
     }
 }

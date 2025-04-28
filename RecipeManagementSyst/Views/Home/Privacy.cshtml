@@ -3,4 +3,69 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="privacy-content">
+    <section>
+        <h3>1. Information Collection (Sample)</h3>
+        <p>For demonstration purposes, this system may collect:</p>
+        <ul>
+            <li>Sample account data (username, test email)</li>
+            <li>Recipe content entered for educational testing</li>
+            <li>Anonymous usage metrics (simulated cookies)</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>2. Data Usage (Educational)</h3>
+        <p>Collected data is used solely to demonstrate:</p>
+        <ul>
+            <li>Recipe management functionality</li>
+            <li>Basic user account operations</li>
+            <li>No real personal data is stored or processed</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>3. Security Note</h3>
+        <p>This educational sample includes:</p>
+        <ul>
+            <li>Simulated password encryption</li>
+            <li>Placeholder security measures</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>4. Your Choices</h3>
+        <ul>
+            <li>All test data can be deleted anytime</li>
+            <li>No actual cookies are used</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>5. About This Policy</h3>
+        <p><em>This is a sample privacy policy for educational demonstration only.</em></p>
+        <p><em>Last Updated: @DateTime.Now.ToString("MMMM d, yyyy")</em></p>
+    </section>
+</div>
+
+<style>
+    .privacy-content {
+        max-width: 700px;
+        margin: 20px auto;
+        text-align: left;
+        line-height: 1.6;
+        font-size: 0.95em;
+    }
+    h3 {
+        color: #2a7f62;
+        margin-top: 25px;
+        font-size: 1.2em;
+    }
+    ul {
+        padding-left: 20px;
+        list-style-type: square;
+    }
+    em {
+        color: #666;
+    }
+</style>

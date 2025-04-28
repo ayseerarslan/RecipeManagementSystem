@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RecipeManagementSyst.Data;
+using RecipeManagementSystemAPI.Models;
 
 #nullable disable
 
-namespace RecipeManagementSyst.Migrations
+namespace RecipeManagementSystemAPI.Migrations
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20250329111111_InitialCreate")]
+    [Migration("20250426142231_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,12 +19,12 @@ namespace RecipeManagementSyst.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.12")
+                .HasAnnotation("ProductVersion", "9.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("RecipeManagementSystem.Models.Ingredient", b =>
+            modelBuilder.Entity("RecipeManagementSystemAPI.Models.Ingredient", b =>
                 {
                     b.Property<int>("IngredientID")
                         .ValueGeneratedOnAdd()
@@ -34,15 +34,14 @@ namespace RecipeManagementSyst.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IngredientID");
 
                     b.ToTable("Ingredients");
                 });
 
-            modelBuilder.Entity("RecipeManagementSystem.Models.Recipe", b =>
+            modelBuilder.Entity("RecipeManagementSystemAPI.Models.Recipe", b =>
                 {
                     b.Property<int>("RecipeID")
                         .ValueGeneratedOnAdd()
@@ -52,8 +51,7 @@ namespace RecipeManagementSyst.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Instructions")
                         .IsRequired()
@@ -61,15 +59,14 @@ namespace RecipeManagementSyst.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RecipeID");
 
                     b.ToTable("Recipes");
                 });
 
-            modelBuilder.Entity("RecipeManagementSystem.Models.RecipeIngredient", b =>
+            modelBuilder.Entity("RecipeManagementSystemAPI.Models.RecipeIngredient", b =>
                 {
                     b.Property<int>("RecipeID")
                         .HasColumnType("int");
@@ -79,8 +76,7 @@ namespace RecipeManagementSyst.Migrations
 
                     b.Property<string>("Quantity")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RecipeID", "IngredientID");
 
@@ -89,15 +85,15 @@ namespace RecipeManagementSyst.Migrations
                     b.ToTable("RecipeIngredients");
                 });
 
-            modelBuilder.Entity("RecipeManagementSystem.Models.RecipeIngredient", b =>
+            modelBuilder.Entity("RecipeManagementSystemAPI.Models.RecipeIngredient", b =>
                 {
-                    b.HasOne("RecipeManagementSystem.Models.Ingredient", "Ingredient")
+                    b.HasOne("RecipeManagementSystemAPI.Models.Ingredient", "Ingredient")
                         .WithMany("RecipeIngredients")
                         .HasForeignKey("IngredientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RecipeManagementSystem.Models.Recipe", "Recipe")
+                    b.HasOne("RecipeManagementSystemAPI.Models.Recipe", "Recipe")
                         .WithMany("RecipeIngredients")
                         .HasForeignKey("RecipeID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -108,12 +104,12 @@ namespace RecipeManagementSyst.Migrations
                     b.Navigation("Recipe");
                 });
 
-            modelBuilder.Entity("RecipeManagementSystem.Models.Ingredient", b =>
+            modelBuilder.Entity("RecipeManagementSystemAPI.Models.Ingredient", b =>
                 {
                     b.Navigation("RecipeIngredients");
                 });
 
-            modelBuilder.Entity("RecipeManagementSystem.Models.Recipe", b =>
+            modelBuilder.Entity("RecipeManagementSystemAPI.Models.Recipe", b =>
                 {
                     b.Navigation("RecipeIngredients");
                 });

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RecipeManagementSystem.Data;
-using RecipeManagementSystem.Models;
+using RecipeManagementSyst.Data;
+using RecipeManagementSyst.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RecipeManagementSystem.Controllers
+namespace RecipeManagementSyst.Controllers
 {
     public class RecipeController : Controller
     {

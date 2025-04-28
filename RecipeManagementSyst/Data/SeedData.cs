@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using RecipeManagementSystem.Data;
-using RecipeManagementSystem.Models;
+//using RecipeManagementSystem.Data;
+using RecipeManagementSyst.Models;
 using System;
 using System.Linq;
 
-namespace RecipeManagementSystem.Data
+namespace RecipeManagementSyst.Data
 {
     public static class SeedData
     {

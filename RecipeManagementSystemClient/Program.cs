@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 Console.WriteLine("📡 Fetching most popular ingredients...\n");
 
-string apiUrl = "https://localhost:7117/api/ingredientanalysis/popular"; // Replace PORT with correct API port
+string apiUrl = "https://recipe-management-system-api.azurewebsites.net/api/ingredientanalysis/popular"; // Replace PORT with correct API port
 
 using HttpClient client = new HttpClient();
 

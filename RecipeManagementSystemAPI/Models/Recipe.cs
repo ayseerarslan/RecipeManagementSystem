@@ -1,26 +1,21 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace RecipeManagementSyst.Models
+namespace RecipeManagementSystemAPI.Models
 {
     public class Recipe
     {
         [Key]
-        [DisplayName("Recipe ID:")]
         public int RecipeID { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters.")]
-        [DisplayName("Name:")]
+        [StringLength(100)]
         public string Name { get; set; }
 
-        [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters.")]
-        [DisplayName("Description:")]
+        [StringLength(500)]
         public string Description { get; set; }
 
         [Required]
-        [DisplayName("Instructions:")]
         public string Instructions { get; set; }
 
         // Navigation property
